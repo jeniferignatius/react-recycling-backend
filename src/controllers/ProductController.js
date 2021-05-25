@@ -3,9 +3,10 @@ const Product = require("../models/Product")
 module.exports = {
 
   async add(request, response) {
+    
 
-    const { idReference, name, description, value, url } = request.body
-
+    const { idReference, name, description, value } = request.body
+    const {url}=request.file
     const existProduct = await Product.findOne({ idReference: idReference }, (error) => {
       if (error) {
         return response.json(error)
